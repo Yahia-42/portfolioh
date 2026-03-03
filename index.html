@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>يحيى نور — Software Engineer</title>
+  <meta name="description" content="يحيى نور — مهندس برمجيات شغوف ببناء حلول تقنية احترافية." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230071e3'/><text y='.9em' font-size='72' x='12'>💻</text></svg>" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+
+  <!-- ══ SCROLL PROGRESS BAR ══ -->
+  <div id="scroll-bar"></div>
+
+  <!-- ══ TOAST NOTIFICATION ══ -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ══ BACK TO TOP ══ -->
+  <button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="رجوع لأعلى">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav>
+    <div class="nav-logo">Yahya<span>.</span></div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about"    data-section="about"    data-ar="عني"     data-en="About">عني</a></li>
+      <li><a href="#skills"   data-section="skills"   data-ar="مهاراتي" data-en="Skills">مهاراتي</a></li>
+      <li><a href="#projects" data-section="projects" data-ar="مشاريعي" data-en="Projects">مشاريعي</a></li>
+      <li><a href="#contact"  data-section="contact"  data-ar="تواصل"   data-en="Contact">تواصل</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <button class="icon-btn" id="langBtn"   title="Switch Language">EN</button>
+      <button class="icon-btn" id="themeBtn"  aria-label="تبديل الوضع">🌙</button>
+      <a href="#contact" class="nav-cta" id="navCta">تواصل معي</a>
+      <button class="hamburger" id="ham" aria-label="القائمة">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══ MOBILE MENU ══ -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about"    onclick="closeMenu()" data-ar="عني"         data-en="About">عني</a>
+    <a href="#skills"   onclick="closeMenu()" data-ar="مهاراتي"     data-en="Skills">مهاراتي</a>
+    <a href="#projects" onclick="closeMenu()" data-ar="مشاريعي"     data-en="Projects">مشاريعي</a>
+    <a href="#contact"  onclick="closeMenu()" data-ar="تواصل معي ←" data-en="Contact Me →">تواصل معي ←</a>
+  </div>
+
+  <!-- ══ HERO ══ -->
+  <section class="hero" id="hero">
+    <div class="bubbles-container" id="bubblesContainer"></div>
+
+    <!-- صورتك الشخصية — ضع الرابط بدل YOUR_PHOTO_URL -->
+    <div class="hero-avatar">
+      <img src="YOUR_PHOTO_URL" alt="Yahya Nour"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+      <div class="avatar-fallback" style="display:none">👨‍💻</div>
+    </div>
+
+    <div class="hero-badge">
+      🟢 <span data-ar="متاح للعمل الآن" data-en="Available for work">متاح للعمل الآن</span>
+    </div>
+
+    <div class="typewriter-wrap">
+      <span id="typewriter"></span><span class="cursor"></span>
+    </div>
+
+    <div class="hero-job">Software Engineer · CS Graduate</div>
+
+    <p class="hero-sub"
+       data-ar="مهندس برمجيات شغوف ببناء حلول تقنية احترافية وتحويل الأفكار لواقع."
+       data-en="A passionate software engineer who builds professional tech solutions and turns ideas into reality.">
+      مهندس برمجيات شغوف ببناء حلول تقنية احترافية وتحويل الأفكار لواقع.
+    </p>
+
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary"   data-ar="🚀 مشاريعي"    data-en="🚀 Projects">🚀 مشاريعي</a>
+      <a href="#contact"  class="btn-secondary" data-ar="💬 تواصل معي"  data-en="💬 Contact Me">💬 تواصل معي</a>
+      <!-- رابط الـ CV — ضع الرابط بدل YOUR_CV_LINK -->
+      <a href="YOUR_CV_LINK" class="btn-cv" download
+         data-ar="📄 تحميل CV" data-en="📄 Download CV">📄 تحميل CV</a>
+    </div>
+
+    <div class="hero-scroll">
+      <span data-ar="اسحب للأسفل" data-en="Scroll down">اسحب للأسفل</span>
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ══ ABOUT ══ -->
+  <section id="about" class="section">
+    <p class="section-label fade-up" data-ar="من أنا"            data-en="About Me">من أنا</p>
+    <h2 class="section-title fade-up" data-ar="مرحباً، أنا يحيى 👋" data-en="Hello, I'm Yahya 👋">مرحباً، أنا يحيى 👋</h2>
+
+    <div class="about-wrap">
+      <!-- بطاقة المعلومات -->
+      <div class="about-card fade-up">
+        <div class="about-name">Yahya Nour</div>
+        <div class="about-role">💼 Software Engineer</div>
+        <p class="about-text"
+           data-ar="مهندس برمجيات شغوف بتطوير التطبيقات والأنظمة عالية الجودة. خريج Computer Science بخبرة في بناء حلول برمجية متكاملة من الفكرة للتنفيذ."
+           data-en="A passionate software engineer who develops high-quality applications and systems. CS graduate with experience building end-to-end software solutions from idea to deployment.">
+          مهندس برمجيات شغوف بتطوير التطبيقات والأنظمة عالية الجودة. خريج Computer Science بخبرة في بناء حلول برمجية متكاملة من الفكرة للتنفيذ.
+        </p>
+        <div class="about-stats">
+          <div class="stat-box">
+            <div class="stat-num">CS</div>
+            <div class="stat-label" data-ar="خريج علوم الحاسوب" data-en="CS Graduate">خريج علوم الحاسوب</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">🚀</div>
+            <div class="stat-label" data-ar="متاح للعمل" data-en="Available Now">متاح للعمل</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">💡</div>
+            <div class="stat-label" data-ar="مشاريع متنوعة" data-en="Various Projects">مشاريع متنوعة</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">🌍</div>
+            <div class="stat-label" data-ar="عمل عن بُعد" data-en="Remote Work">عمل عن بُعد</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- بطاقة التعليم -->
+      <div class="edu-card fade-up">
+        <p class="section-label" style="margin-bottom:.2rem"
+           data-ar="التعليم والخبرة" data-en="Education & Experience">التعليم والخبرة</p>
+
+        <div class="edu-item">
+          <div class="edu-icon" style="background:#e8f0fe">🎓</div>
+          <div>
+            <div class="edu-title" data-ar="بكالوريوس علوم الحاسوب" data-en="Bachelor of Computer Science">بكالوريوس علوم الحاسوب</div>
+            <div class="edu-sub">Computer Science — Software Engineering</div>
+            <div class="edu-year" data-ar="خريج" data-en="Graduate">خريج</div>
+          </div>
+        </div>
+        <hr class="divider" />
+
+        <div class="edu-item">
+          <div class="edu-icon" style="background:#e8f5e9">💻</div>
+          <div>
+            <div class="edu-title">Software Engineer</div>
+            <div class="edu-sub"
+                 data-ar="تطوير تطبيقات وأنظمة برمجية متكاملة"
+                 data-en="Developing full-stack applications and software systems">
+              تطوير تطبيقات وأنظمة برمجية متكاملة
+            </div>
+            <div class="edu-year" data-ar="حالياً" data-en="Present">حالياً</div>
+          </div>
+        </div>
+        <hr class="divider" />
+
+        <div class="edu-item">
+          <div class="edu-icon" style="background:#fff3e0">🏆</div>
+          <div>
+            <div class="edu-title" data-ar="مشاريع مستقلة" data-en="Freelance Projects">مشاريع مستقلة</div>
+            <div class="edu-sub"
+                 data-ar="تطوير مشاريع متنوعة للعملاء والمجتمع المفتوح"
+                 data-en="Building diverse projects for clients and open source">
+              تطوير مشاريع متنوعة للعملاء والمجتمع المفتوح
+            </div>
+            <div class="edu-year" data-ar="مستمر" data-en="Ongoing">مستمر</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SKILLS ══ -->
+  <div class="skills-bg" id="skills">
+    <section class="section">
+      <p class="section-label fade-up" data-ar="ما أتقنه"         data-en="What I Do">ما أتقنه</p>
+      <h2 class="section-title fade-up" data-ar="مهاراتي التقنية" data-en="Technical Skills">مهاراتي التقنية</h2>
+      <p class="section-sub fade-up"
+         data-ar="أعمل بمجموعة متنوعة من التقنيات الحديثة لبناء حلول برمجية متكاملة."
+         data-en="I work with a wide range of modern technologies to build complete software solutions.">
+        أعمل بمجموعة متنوعة من التقنيات الحديثة لبناء حلول برمجية متكاملة.
+      </p>
+      <!-- يتم إنشاؤها بواسطة script.js -->
+      <div class="skills-list fade-up" id="skillsList"></div>
+    </section>
+  </div>
+
+  <!-- ══ PROJECTS ══ -->
+  <section id="projects" class="section">
+    <p class="section-label fade-up" data-ar="أعمالي"         data-en="My Work">أعمالي</p>
+    <h2 class="section-title fade-up" data-ar="مشاريع مختارة" data-en="Selected Projects">مشاريع مختارة</h2>
+    <p class="section-sub fade-up"
+       data-ar="مجموعة من المشاريع التي تعكس مهاراتي وشغفي بالبرمجة."
+       data-en="A collection of projects that reflect my skills and passion for coding.">
+      مجموعة من المشاريع التي تعكس مهاراتي وشغفي بالبرمجة.
+    </p>
+
+    <div class="projects-grid">
+
+      <div class="project-card fade-up">
+        <div class="project-cover" style="background:linear-gradient(135deg,#e8f0fe,#c7d7f9)">🛒</div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span>
+          </div>
+          <div class="project-name" data-ar="منصة تجارة إلكترونية" data-en="E-Commerce Platform">منصة تجارة إلكترونية</div>
+          <div class="project-desc"
+               data-ar="متجر إلكتروني متكامل مع نظام دفع وإدارة المنتجات والطلبات بواجهة مستخدم سلسة."
+               data-en="A full e-commerce store with payment system, product & order management and smooth UI.">
+            متجر إلكتروني متكامل مع نظام دفع وإدارة المنتجات والطلبات بواجهة مستخدم سلسة.
+          </div>
+          <div class="project-footer">
+            <a href="YOUR_DEMO_1" target="_blank" class="btn-sm" data-ar="عرض المشروع →" data-en="View Project →">عرض المشروع →</a>
+            <a href="https://github.com/yahyanour" target="_blank" class="btn-sm">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-cover" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9)">📊</div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">Python</span><span class="tag">Django</span><span class="tag">SQL</span>
+          </div>
+          <div class="project-name" data-ar="نظام إدارة بيانات" data-en="Data Management System">نظام إدارة بيانات</div>
+          <div class="project-desc"
+               data-ar="نظام متكامل لإدارة وتحليل البيانات مع لوحة تحكم تفاعلية وتقارير مفصلة."
+               data-en="A complete system for managing and analyzing data with an interactive dashboard.">
+            نظام متكامل لإدارة وتحليل البيانات مع لوحة تحكم تفاعلية وتقارير مفصلة.
+          </div>
+          <div class="project-footer">
+            <a href="YOUR_DEMO_2" target="_blank" class="btn-sm" data-ar="عرض المشروع →" data-en="View Project →">عرض المشروع →</a>
+            <a href="https://github.com/yahyanour" target="_blank" class="btn-sm">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-cover" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2)">📱</div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">Java</span><span class="tag">Android</span><span class="tag">Firebase</span>
+          </div>
+          <div class="project-name" data-ar="تطبيق موبايل" data-en="Mobile Application">تطبيق موبايل</div>
+          <div class="project-desc"
+               data-ar="تطبيق أندرويد متكامل بتجربة مستخدم سلسة وربط مع قواعد بيانات سحابية في الوقت الحقيقي."
+               data-en="A full Android app with smooth UX and real-time cloud database integration.">
+            تطبيق أندرويد متكامل بتجربة مستخدم سلسة وربط مع قواعد بيانات سحابية في الوقت الحقيقي.
+          </div>
+          <div class="project-footer">
+            <a href="YOUR_DEMO_3" target="_blank" class="btn-sm" data-ar="عرض المشروع →" data-en="View Project →">عرض المشروع →</a>
+            <a href="https://github.com/yahyanour" target="_blank" class="btn-sm">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ CONTACT ══ -->
+  <div class="skills-bg">
+    <section id="contact" class="section">
+      <p class="section-label fade-up" data-ar="تواصل"           data-en="Get In Touch">تواصل</p>
+      <h2 class="section-title fade-up" data-ar="خلينا نتكلم 💬" data-en="Let's Talk 💬">خلينا نتكلم 💬</h2>
+      <p class="section-sub fade-up"
+         data-ar="عندك مشروع في بالك؟ أو عايز تتعاون؟ تواصل معي في أي وقت."
+         data-en="Have a project in mind? Want to collaborate? Reach out anytime.">
+        عندك مشروع في بالك؟ أو عايز تتعاون؟ تواصل معي في أي وقت.
+      </p>
+
+      <div class="contact-wrap fade-up">
+
+        <!-- روابط التواصل -->
+        <div class="contact-info">
+
+          <a href="https://wa.me/201024427411" class="contact-item" target="_blank">
+            <div class="contact-icon" style="background:#e8f5e9">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.824L.057 23.885a.5.5 0 0 0 .612.612l6.102-1.457A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.9 9.9 0 0 1-5.031-1.371l-.361-.214-3.741.982.998-3.648-.235-.374A9.9 9.9 0 0 1 2.1 12C2.1 6.532 6.532 2.1 12 2.1S21.9 6.532 21.9 12 17.468 21.9 12 21.9z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="contact-label">WhatsApp</div>
+              <div class="contact-value" data-ar="تواصل عبر واتساب" data-en="Chat on WhatsApp">تواصل عبر واتساب</div>
+            </div>
+          </a>
+
+          <a href="mailto:ya7ia99@gmail.com" class="contact-item">
+            <div class="contact-icon" style="background:#fce8e6">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <rect width="24" height="24" rx="4" fill="#EA4335"/>
+                <path d="M4 7.5L12 13l8-5.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+                <rect x="4" y="7" width="16" height="11" rx="1.5" stroke="#fff" stroke-width="1.5" fill="none"/>
+              </svg>
+            </div>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-value"></div>
+            </div>
+          </a>
+
+          <a href="https://github.com/yahyanour" class="contact-item" target="_blank">
+            <div class="contact-icon" style="background:#f5f5f7">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="contact-label">GitHub</div>
+              <div class="contact-value"></div>
+            </div>
+          </a>
+
+          <a href="https://www.linkedin.com/in/yahia-nour-714a8534b" class="contact-item" target="_blank">
+            <div class="contact-icon" style="background:#e3f2fd">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#0A66C2">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="contact-label">LinkedIn</div>
+              <div class="contact-value"></div>
+            </div>
+          </a>
+
+          <a href="https://www.facebook.com/yahyanour.654792" class="contact-item" target="_blank">
+            <div class="contact-icon" style="background:#e8f0fe">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1877F2">
+                <path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="contact-label">Facebook</div>
+              <div class="contact-value"></div>
+            </div>
+          </a>
+
+          <a href="tel:+201024427411" class="contact-item">
+            <div class="contact-icon" style="background:#fff3e0">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <rect width="24" height="24" rx="12" fill="#FF9500"/>
+                <path d="M16.5 14.5c-.8-.1-1.6-.3-2.3-.6-.3-.1-.6 0-.8.2l-1 1.2c-1.6-.8-2.9-2.1-3.7-3.7l1.2-1c.2-.2.3-.5.2-.8-.3-.7-.5-1.5-.6-2.3-.1-.4-.4-.7-.8-.7H7.3C6.9 6.8 6.6 7.2 6.6 7.6c.2 5.3 4.5 9.6 9.8 9.8.4 0 .8-.3.8-.7v-1.4c0-.4-.3-.7-.7-.8z" fill="#fff"/>
+              </svg>
+            </div>
+            <div>
+              <div class="contact-label" data-ar="رقم الهاتف" data-en="Phone">رقم الهاتف</div>
+              <div class="contact-value"></div>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- فورم التواصل -->
+        <div class="contact-form">
+          <h3 data-ar="ابعت رسالة مباشرة 🚀" data-en="Send a Message 🚀">ابعت رسالة مباشرة 🚀</h3>
+          <p data-ar="هرد عليك في أقرب وقت ممكن" data-en="I'll reply as soon as possible">هرد عليك في أقرب وقت ممكن</p>
+
+          <div class="form-group">
+            <label data-ar="اسمك" data-en="Your Name">اسمك</label>
+            <input type="text" id="fname" placeholder="Name" />
+            <span class="field-error" id="fnameErr"
+                  data-ar="⚠️ من فضلك اكتب اسمك"
+                  data-en="⚠️ Please enter your name">⚠️ من فضلك اكتب اسمك</span>
+          </div>
+
+          <div class="form-group">
+            <label data-ar="إيميلك" data-en="Your Email">إيميلك</label>
+            <input type="email" id="femail" placeholder="example@email.com" />
+            <span class="field-error" id="femailErr"
+                  data-ar="⚠️ من فضلك اكتب إيميل صحيح"
+                  data-en="⚠️ Please enter a valid email">⚠️ من فضلك اكتب إيميل صحيح</span>
+          </div>
+
+          <div class="form-group">
+            <label data-ar="رسالتك" data-en="Your Message">رسالتك</label>
+            <textarea id="fmsg" placeholder="..."></textarea>
+            <span class="field-error" id="fmsgErr"
+                  data-ar="⚠️ من فضلك اكتب رسالتك"
+                  data-en="⚠️ Please write your message">⚠️ من فضلك اكتب رسالتك</span>
+          </div>
+
+          <button class="btn-send" id="sendBtn" onclick="sendForm()">
+            <span data-ar="إرسال الرسالة ✉️" data-en="Send Message ✉️">إرسال الرسالة ✉️</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <p><strong>Yahya Nour</strong> — Software Engineer</p>
+    <div class="footer-links">
+      <a href="https://github.com/yahyanour"              target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/yahia-nour-714a8534b" target="_blank">LinkedIn</a>
+      <a href="mailto:ya7ia99@gmail.com">ya7ia99@gmail.com</a>
+    </div>
+    <p style="margin-top:.5rem;font-size:.74rem">© Yahya Nour · All rights reserved</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+
+</body>
+</html>
